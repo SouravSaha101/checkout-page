@@ -1,0 +1,40 @@
+.address-box {
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid #eaeaec;
+  max-width: 45rem;
+  margin-bottom: 10px;
+}
+.addressStrip-base-title {
+  max-width: 75%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.addressStrip-base-addressName {
+  width: 100%;
+  display: flex;
+  white-space: pre;
+}
+.addressStrip-base-subText {
+  line-height: 15px;
+  margin-top: 4px;
+  overflow: hidden;
+  text-transform: capitalize;
+}
+
+.text-area {
+  max-height: 6rem;
+}
+.addressStrip-base-highlight {
+  font-size: 21px;
+  font-weight: 600;
+  margin-left: 10px;
+  margin-top: -5px;
+  padding-bottom: 4px;
+}
+/* 
+.adjust-button {
+  margin-left: 82px;
+  margin-top: 22px;
+  position: absolute;
+} */
