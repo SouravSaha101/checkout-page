@@ -12,3 +12,22 @@
   color: #ff3f6c;
   height: 40px;
 }
+
+.itemBlock-base-itemHeader {
+  padding: 8px 12px 18px;
+}
+.itemBlock-base-itemHeader div {
+  font-size: 16px;
+  font-weight: 600;
+  display: inline-block;
+}
+.itemBlock-base-rupeeIcon {
+  margin-left: 3px;
+  margin-right: 1px;
+  fill: #282c3f;
+  height: 11px;
+}
+.itemBlock-base-totalCartValue {
+  float: right;
+  font-weight: 600;
+}

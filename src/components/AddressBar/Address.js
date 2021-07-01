@@ -1,8 +1,10 @@
 import React from "react";
 import "./Address.css";
 
-function Address({ note }) {
-  const editNote = () => {};
+function Address({ note, onAddressChange }) {
+  const editNote = (note) => {
+    onAddressChange(note);
+  };
   return (
     <div className="address-box">
       <div className="addressStrip-base-title">
