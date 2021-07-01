@@ -4,6 +4,9 @@ import Address from "./components/AddressBar/Address";
 import Navbar from "./components/Navbar/Navbar";
 import Adbox from "./components/AdBox/Adbox";
 import Sidebar from "./components/Sidebar/Sidebar";
+import ShoppingTotal from "./components/ShoppingTotal/ShoppingTotal";
+import ItemCard from "./components/ItemCard/ItemCard";
+import SuggestionCard from "./components/SuggestionCard/SuggestionCard";
 
 const details = {
   isEditing: false,
@@ -30,6 +33,67 @@ const ad3 = {
   isOffer: true,
   display: "View",
 };
+
+const itemList = [
+  {
+    id: 1,
+    name: "Brown Brim",
+    imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
+    price: 2500,
+  },
+];
+
+const suggestionItem = [
+  {
+    id: 10,
+    name: "Adidas NMD",
+    imageUrl: "https://i.ibb.co/0s3pdnc/adidas-nmd.png",
+    price: 220,
+  },
+  {
+    id: 11,
+    name: "Adidas Yeezy",
+    imageUrl: "https://i.ibb.co/dJbG1cT/yeezy.png",
+    price: 280,
+  },
+  {
+    id: 12,
+    name: "Black Converse",
+    imageUrl: "https://i.ibb.co/bPmVXyP/black-converse.png",
+    price: 110,
+  },
+  {
+    id: 13,
+    name: "Nike White AirForce",
+    imageUrl: "https://i.ibb.co/1RcFPk0/white-nike-high-tops.png",
+    price: 160,
+  },
+  {
+    id: 14,
+    name: "Nike Red High Tops",
+    imageUrl: "https://i.ibb.co/QcvzydB/nikes-red.png",
+    price: 160,
+  },
+  {
+    id: 15,
+    name: "Nike Brown High Tops",
+    imageUrl: "https://i.ibb.co/fMTV342/nike-brown.png",
+    price: 160,
+  },
+  {
+    id: 16,
+    name: "Air Jordan Limited",
+    imageUrl: "https://i.ibb.co/w4k6Ws9/nike-funky.png",
+    price: 190,
+  },
+  {
+    id: 17,
+    name: "Timberlands",
+    imageUrl: "https://i.ibb.co/Mhh6wBg/timberlands.png",
+    price: 200,
+  },
+];
+
 function App() {
   const [userDetails, setUserDetails] = useState(details);
 
@@ -51,34 +115,20 @@ function App() {
             <Adbox text={ad1} />
             <Adbox text={ad2} />
             <Adbox text={ad3} />
-            <div className="itemBlock-base-itemHeader">
-              <div>My Shopping Bag (1 Item)</div>
-              <div className="itemBlock-base-totalCartValue">
-                Total:
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="8"
-                  height="10"
-                  viewBox="0 0 8 10"
-                  className="itemBlock-base-rupeeIcon"
-                >
-                  <path
-                    fillRule="nonzero"
-                    d="M5.841 9.44l-1.21.513L.365 5.968l.547-.875c.251-.005.529-.033.834-.086a4.91 4.91 0 0 0 .896-.242c.292-.11.556-.251.793-.424s.412-.383.526-.63H.564V2.578h3.431a1.779 1.779 0 0 0-.307-.51 1.99 1.99 0 0 0-.52-.426 2.789 2.789 0 0 0-.738-.29 3.955 3.955 0 0 0-.957-.107h-.91V0h6.31v1.244H4.522c.082.082.162.179.239.29a3.867 3.867 0 0 1 .39.712c.05.12.086.23.109.331h1.613v1.135H5.246a2.51 2.51 0 0 1-.434.906 3.293 3.293 0 0 1-.718.694 3.884 3.884 0 0 1-.916.478 5.378 5.378 0 0 1-1.028.267L5.84 9.44z"
-                  ></path>
-                </svg>
-                2,399
-              </div>
-            </div>
+            <ShoppingTotal itemCount={itemList.length} totalPrice={2500} />
+            <ItemCard />
           </div>
           <div className="col-lg-4">
-            <Sidebar />
+            <Sidebar data={suggestionItem} />
           </div>
         </div>
       </div>
       <hr />
       <div className="container">
         <h4>You May Also Like</h4>
+        <div className="row">
+          <SuggestionCard data={suggestionItem} />
+        </div>
       </div>
     </div>
   );
