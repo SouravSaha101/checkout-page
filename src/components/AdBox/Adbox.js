@@ -5,7 +5,6 @@ const boxStyle = {
   padding: "16px",
   borderRadius: "4px",
   border: "1px solid #eaeaec",
-  maxWidth: "45rem",
   marginBottom: "10px",
 };
 const headerStyle = {
@@ -40,7 +39,7 @@ function Adbox({ text }) {
         {text.header}
       </div>
       <div style={messageStyle}>{text.message}</div>
-      {text.isOffer && <div style={showMoreStyle}> Show More</div>}
+      {text.isOffer && <div style={showMoreStyle}> {text.display}</div>}
     </div>
   );
 }
