@@ -31,3 +31,7 @@
   float: right;
   font-weight: 600;
 }
+
+.sideline {
+  border-right: 1px solid #eaeaec;
+}

@@ -44,9 +44,22 @@ const itemList = [
     soldBy: "Seller Best",
     discount: 50,
     deliveryDate: "5 Jul 2021",
-    size: "S",
+    size: "M",
     qty: 1,
     orgPrice: 5000,
+  },
+  {
+    id: 2,
+    name: "Blue Jean Jacket",
+    brand: "Pepe",
+    imageUrl: "https://i.ibb.co/mJS6vz0/blue-jean-jacket.png",
+    price: 6300,
+    soldBy: "New India",
+    discount: 30,
+    deliveryDate: "9 Jul 2021",
+    size: "L",
+    qty: 1,
+    orgPrice: 9000,
   },
 ];
 
@@ -100,12 +113,20 @@ const suggestionItem = [
     price: 200,
   },
 ];
-
+const textWhislist = {
+  header: "Add More From Wishlist",
+  isOffer: true,
+  display: "Click Here",
+};
 function App() {
   const [userDetails, setUserDetails] = useState(details);
+  const [cartItem, setCartItem] = useState(itemList);
 
   const changeAddressHandler = (det) => {
     setUserDetails({ ...det });
+  };
+  const cartChangeHadler = (data) => {
+    setCartItem([...cartItem, ...data]);
   };
   return (
     <div className="">
@@ -114,7 +135,7 @@ function App() {
       <br />
       <div className="container">
         <div className="row">
-          <div className="col-lg-8">
+          <div className="col-lg-8 sideline">
             <Address
               note={userDetails}
               onAddressChange={changeAddressHandler}
@@ -123,7 +144,8 @@ function App() {
             <Adbox text={ad2} />
             <Adbox text={ad3} />
             <ShoppingTotal itemCount={itemList.length} totalPrice={2500} />
-            <ItemCard data={itemList} />
+            <ItemCard data={cartItem} onCartChange={cartChangeHadler} />
+            <Adbox text={textWhislist} />
           </div>
           <div className="col-lg-4">
             <Sidebar />

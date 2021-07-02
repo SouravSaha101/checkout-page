@@ -22,7 +22,8 @@
 }
 
 .text-area {
-  max-height: 6rem;
+  min-width: 30rem;
+  max-height: 3rem;
 }
 .addressStrip-base-highlight {
   font-size: 21px;

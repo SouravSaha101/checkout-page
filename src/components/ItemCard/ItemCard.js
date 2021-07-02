@@ -1,8 +1,17 @@
 import React from "react";
 import "./ItemCard.css";
 import RupeeSymbol from "../Helper/RupeeSymbol";
+import Dropdown from "../Helper/Dropdown";
 
-function ItemCard({ data }) {
+const sizeArray = ["S", "M", "L", "XL"];
+const quantityArray = Array.from({ length: 10 }, (_, i) => i + 1);
+
+function ItemCard({ data, onCartChange }) {
+  const cartChangeHandler = (newData) => {
+    console.log(newData);
+    // onCartChange({ ...data, ...newData });
+    console.log(data);
+  };
   return (
     <>
       {data.map((el) => (
@@ -32,8 +41,59 @@ function ItemCard({ data }) {
                   </div>
                 </div>
               </div>
+              <div className="dropdown-pos">
+                <div className="dropdown-dis">
+                  Size:{" "}
+                  <Dropdown
+                    data={sizeArray}
+                    value={el.size}
+                    id={"size"}
+                    onChangeDropdown={cartChangeHandler}
+                  />
+                </div>
+                <div className="dropdown-dis">
+                  Qty:{" "}
+                  <Dropdown
+                    data={quantityArray}
+                    value={el.qty}
+                    id={"qty"}
+                    onChangeDropdown={cartChangeHandler}
+                  />
+                </div>
+              </div>
+              <div className="itemComponents-base-messageContainer">
+                <div className="itemComponents-base-message">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="8"
+                    viewBox="0 0 10 8"
+                    className="itemComponents-base-checkIcon"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M9.775.227A.716.716 0 0 0 8.716.24L3.373 6.015a.09.09 0 0 1-.133 0L1.278 3.91a.716.716 0 0 0-1.059-.001.834.834 0 0 0 0 1.127l2.565 2.742c.14.15.33.223.53.223h.004a.71.71 0 0 0 .53-.23l5.939-6.416A.833.833 0 0 0 9.775.227"
+                    ></path>
+                  </svg>
+                  Delivery by
+                  <span className="itemComponents-base-highlightedMessage">
+                    {el.deliveryDate}
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
+          <hr />
+          <div className="row">
+            <div className="col-lg-4">
+              <button className="item-button">Remove</button>
+            </div>
+            <div className="col-lg-1 vl"></div>
+            <div className="col-lg-7">
+              <button className="item-button">Move to Wishlist</button>
+            </div>
+          </div>
+          <div></div>
         </div>
       ))}
     </>
