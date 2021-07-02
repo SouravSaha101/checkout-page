@@ -38,8 +38,15 @@ const itemList = [
   {
     id: 1,
     name: "Brown Brim",
+    brand: "Nike",
     imageUrl: "https://i.ibb.co/ZYW3VTp/brown-brim.png",
     price: 2500,
+    soldBy: "Seller Best",
+    discount: 50,
+    deliveryDate: "5 Jul 2021",
+    size: "S",
+    qty: 1,
+    orgPrice: 5000,
   },
 ];
 
@@ -116,10 +123,10 @@ function App() {
             <Adbox text={ad2} />
             <Adbox text={ad3} />
             <ShoppingTotal itemCount={itemList.length} totalPrice={2500} />
-            <ItemCard />
+            <ItemCard data={itemList} />
           </div>
           <div className="col-lg-4">
-            <Sidebar data={suggestionItem} />
+            <Sidebar />
           </div>
         </div>
       </div>

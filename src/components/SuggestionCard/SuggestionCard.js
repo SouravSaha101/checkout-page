@@ -3,7 +3,7 @@ import "./SuggestionCard.css";
 import RupeeSymbol from "../Helper/RupeeSymbol";
 
 const cardStyle = {
-  width: "18rem",
+  width: "14rem",
   marginRight: "3rem",
   marginBottom: "3rem",
 };
