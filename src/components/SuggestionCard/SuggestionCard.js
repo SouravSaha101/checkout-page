@@ -21,6 +21,7 @@ function SuggestionCard({ data }) {
               {el.price}
             </p>
           </div>
+          <button className="base-button">Add to Bag</button>
         </div>
       ))}
     </>

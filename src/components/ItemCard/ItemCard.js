@@ -6,7 +6,7 @@ import Dropdown from "../Helper/Dropdown";
 const sizeArray = ["S", "M", "L", "XL"];
 const quantityArray = Array.from({ length: 10 }, (_, i) => i + 1);
 
-function ItemCard({ data, onCartChange }) {
+function ItemCard({ data, onCartChange, removeCart }) {
   const cartChangeHandler = (newData) => {
     let key = Object.keys(newData)[1];
     data.map((el) => {
@@ -16,8 +16,12 @@ function ItemCard({ data, onCartChange }) {
     });
     onCartChange(data);
   };
+  const removeCartHandler = (e) => {
+    removeCart(e.target.id);
+  };
   return (
     <>
+      {data.length === 0 && <h1>No Item In Cart</h1>}
       {data.map((el) => (
         <div className="box" key={el.id}>
           <div className="row">
@@ -92,11 +96,23 @@ function ItemCard({ data, onCartChange }) {
           <hr />
           <div className="row">
             <div className="col-lg-4">
-              <button className="item-button">Remove</button>
+              <button
+                className="item-button"
+                id={el.id}
+                onClick={removeCartHandler}
+              >
+                Remove
+              </button>
             </div>
             <div className="col-lg-1 vl"></div>
             <div className="col-lg-7">
-              <button className="item-button">Move to Wishlist</button>
+              <button
+                className="item-button"
+                id={el.id}
+                onClick={removeCartHandler}
+              >
+                Move to Wishlist
+              </button>
             </div>
           </div>
           <div></div>
