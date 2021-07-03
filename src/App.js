@@ -13,12 +13,7 @@ const details = {
   name: "Sourav Saha",
   address: "7/55 Gora Pada Sarkar Lane, Kolkata- 67",
 };
-const ad1 = {
-  header: "Hurray! You will save Rs. 2,400 on this order",
-  message:
-    "Shop now with Early Access and get your favourites products at sale prices.",
-  isOffer: false,
-};
+
 const ad2 = {
   header: "Available Offers",
   message:
@@ -186,6 +181,13 @@ function App() {
   const [cartItem, setCartItem] = useState(itemList);
   const [price, setPrice] = useState(initialPrice);
   const [suggestionItemList, setSuggestionItemList] = useState(suggestionItem);
+
+  const ad1 = {
+    header: `Hurray! You will save Rs. ${price.discount.toLocaleString()} on this order`,
+    message:
+      "Shop now with Early Access and get your favourites products at sale prices.",
+    isOffer: false,
+  };
 
   useEffect(
     () => {

@@ -64,7 +64,7 @@ function ItemCard({ data, onCartChange, removeCart }) {
                   Qty:{" "}
                   <Dropdown
                     data={quantityArray}
-                    value={+el.qty}
+                    value={el.qty}
                     itemId={el.id}
                     id={"qty"}
                     onChangeDropdown={cartChangeHandler}
