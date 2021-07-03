@@ -8,7 +8,10 @@ const cardStyle = {
   marginBottom: "3rem",
 };
 
-function SuggestionCard({ data }) {
+function SuggestionCard({ data, onAddtoBag }) {
+  const addedTobagHandler = (el) => {
+    onAddtoBag(JSON.parse(el.target.value));
+  };
   return (
     <>
       {data.map((el) => (
@@ -21,7 +24,13 @@ function SuggestionCard({ data }) {
               {el.price}
             </p>
           </div>
-          <button className="base-button">Add to Bag</button>
+          <button
+            className="base-button"
+            value={JSON.stringify(el)}
+            onClick={addedTobagHandler}
+          >
+            Add to Bag
+          </button>
         </div>
       ))}
     </>

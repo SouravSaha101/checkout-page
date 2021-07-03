@@ -9,7 +9,7 @@ const quantityArray = Array.from({ length: 10 }, (_, i) => i + 1);
 function ItemCard({ data, onCartChange, removeCart }) {
   const cartChangeHandler = (newData) => {
     let key = Object.keys(newData)[1];
-    data.map((el) => {
+    data.forEach((el) => {
       if (el.id === newData.id) {
         el[key] = newData[key];
       }

@@ -26,8 +26,7 @@ const ad2 = {
   isOffer: true,
   display: "Show More",
 };
-let price = 100;
-
+let price = Math.random().toFixed(2) * 500;
 const ad3 = {
   header: `Bag price dropped by ${price}`,
   isOffer: true,
@@ -186,6 +185,7 @@ function App() {
   const [userDetails, setUserDetails] = useState(details);
   const [cartItem, setCartItem] = useState(itemList);
   const [price, setPrice] = useState(initialPrice);
+  const [suggestionItemList, setSuggestionItemList] = useState(suggestionItem);
 
   useEffect(() => {
     let totalMRP = 0;
@@ -219,6 +219,15 @@ function App() {
       }
     });
     setCartItem([...updatadCart]);
+  };
+  const suggestionItemAdded = (data) => {
+    cartItem.push(data);
+    setCartItem([...cartItem]);
+
+    const filteredSuggestionList = suggestionItemList.filter(
+      (item) => item.id !== data.id
+    );
+    setSuggestionItemList([...filteredSuggestionList]);
   };
   return (
     <div className="">
@@ -255,7 +264,10 @@ function App() {
       <div className="container">
         <h4>You May Also Like</h4>
         <div className="row">
-          <SuggestionCard data={suggestionItem} />
+          <SuggestionCard
+            data={suggestionItemList}
+            onAddtoBag={suggestionItemAdded}
+          />
         </div>
       </div>
     </div>
