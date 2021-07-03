@@ -187,18 +187,22 @@ function App() {
   const [price, setPrice] = useState(initialPrice);
   const [suggestionItemList, setSuggestionItemList] = useState(suggestionItem);
 
-  useEffect(() => {
-    let totalMRP = 0;
-    let discount = 0;
-    let itemCount = cartItem.length;
-    cartItem.forEach((el) => {
-      totalMRP += +el.qty * el.price;
-      discount += el.orgPrice - el.price;
-    });
-    let fee = totalMRP < 10000 ? 99 : 0;
-    let amount = totalMRP + price.giftWrap + fee;
-    setPrice((p) => ({ ...p, amount, totalMRP, discount, itemCount, fee }));
-  }, [cartItem]);
+  useEffect(
+    () => {
+      let totalMRP = 0;
+      let discount = 0;
+      let itemCount = cartItem.length;
+      cartItem.forEach((el) => {
+        totalMRP += +el.qty * el.price;
+        discount += el.orgPrice - el.price;
+      });
+      let fee = totalMRP < 10000 ? 99 : 0;
+      let amount = totalMRP + price.giftWrap + fee;
+      setPrice((p) => ({ ...p, amount, totalMRP, discount, itemCount, fee }));
+    },
+    // eslint-disable-next-line
+    [cartItem]
+  );
 
   const giftHandler = (data) => {
     let amount = price.amount - price.giftWrap + data;
