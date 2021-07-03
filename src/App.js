@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Address from "./components/AddressBar/Address";
 import Navbar from "./components/Navbar/Navbar";
@@ -118,9 +118,31 @@ const textWhislist = {
   isOffer: true,
   display: "Click Here",
 };
+const initialPrice = {
+  itemCount: 0,
+  totalMRP: 0,
+  discount: 0,
+  giftWrap: 0,
+  fee: 0,
+  amount: 0,
+};
 function App() {
   const [userDetails, setUserDetails] = useState(details);
   const [cartItem, setCartItem] = useState(itemList);
+  const [price, setPrice] = useState(initialPrice);
+
+  useEffect(() => {
+    let totalMRP = 0;
+    let discount = 0;
+    let itemCount = cartItem.length;
+    cartItem.forEach((el) => {
+      totalMRP += el.price;
+      discount += el.orgPrice - el.price;
+    });
+    let fee = totalMRP < 5000 ? 99 : 0;
+    let amount = totalMRP + price.giftWrap + fee;
+    setPrice({ ...price, amount, totalMRP, discount, itemCount, fee });
+  }, [cartItem]);
 
   const changeAddressHandler = (det) => {
     setUserDetails({ ...det });
@@ -148,7 +170,7 @@ function App() {
             <Adbox text={textWhislist} />
           </div>
           <div className="col-lg-4">
-            <Sidebar />
+            <Sidebar price={price} />
           </div>
         </div>
       </div>

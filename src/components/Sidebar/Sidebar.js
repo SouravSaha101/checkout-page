@@ -12,9 +12,9 @@ const Sidebar = (props) => {
         isGift
       />
 
-      <Pricing MRP={100} />
+      <Pricing price={props.price} />
       <br />
-      {!props.isFee && (
+      {!props.Fee && (
         <>
           <Offersbox
             message="Yay! No Convinence fee on this order"
