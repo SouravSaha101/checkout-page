@@ -1,0 +1,35 @@
+.price-row {
+  margin-bottom: 12px;
+  line-height: 16px;
+  display: flex;
+  font-size: large;
+}
+.price-header {
+  font-size: 15px;
+  font-weight: 700;
+  color: #535766;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  margin-top: 3rem;
+}
+.price-dis {
+  margin-left: auto;
+}
+.cut-off {
+  text-decoration: line-through;
+  color: #03a685;
+}
+.gift {
+  color: #03a685;
+}
+.price-total {
+  margin-left: auto;
+}
+.price-row-total {
+  margin-top: 20px;
+  margin-bottom: 12px;
+  line-height: 16px;
+  display: flex;
+  font-size: 21px;
+  font-weight: 700;
+}

@@ -1,11 +1,30 @@
 import React from "react";
 import "./Sidebar.css";
 import Offersbox from "../OffersBox/Offersbox";
-
-const Sidebar = () => {
+import Pricing from "../Pricing/Pricing";
+const Sidebar = (props) => {
   return (
     <div className="sidebar">
-      <Offersbox />
+      <Offersbox header="OFFERS & COUPONS" message="1 Offer On Your Bag" />
+      <Offersbox
+        header="GIFTING & PERSONALISATION"
+        message="Gift wrap and personalised message on card, Only for 25"
+        isGift
+      />
+
+      <Pricing MRP={100} />
+      <br />
+      {!props.isFee && (
+        <>
+          <Offersbox
+            message="Yay! No Convinence fee on this order"
+            isGift
+            isFee
+          />
+          <br />
+        </>
+      )}
+      <button className="order-button"> Place Order</button>
     </div>
   );
 };
