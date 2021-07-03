@@ -8,9 +8,7 @@ const quantityArray = Array.from({ length: 10 }, (_, i) => i + 1);
 
 function ItemCard({ data, onCartChange }) {
   const cartChangeHandler = (newData) => {
-    console.log(newData);
     // onCartChange({ ...data, ...newData });
-    console.log(data);
   };
   return (
     <>

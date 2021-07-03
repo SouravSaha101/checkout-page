@@ -3,6 +3,9 @@ import "./Sidebar.css";
 import Offersbox from "../OffersBox/Offersbox";
 import Pricing from "../Pricing/Pricing";
 const Sidebar = (props) => {
+  const giftClicked = (data) => {
+    props.giftFee(data);
+  };
   return (
     <div className="sidebar">
       <Offersbox header="OFFERS & COUPONS" message="1 Offer On Your Bag" />
@@ -10,11 +13,13 @@ const Sidebar = (props) => {
         header="GIFTING & PERSONALISATION"
         message="Gift wrap and personalised message on card, Only for 25"
         isGift
+        giftClick={giftClicked}
+        fee={props.price}
       />
 
       <Pricing price={props.price} />
       <br />
-      {!props.Fee && (
+      {!props.price.Fee && (
         <>
           <Offersbox
             message="Yay! No Convinence fee on this order"

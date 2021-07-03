@@ -23,16 +23,16 @@ function Pricing({ price }) {
         </div>
         <div className="price-row">
           Convenience Fee
-          {!price.Fee ? (
+          {!price.fee ? (
             <>
               <span className="price-dis cut-off">
-                <RupeeSymbol /> {price.Fee}
+                <RupeeSymbol /> {price.fee}
               </span>
               FREE
             </>
           ) : (
             <span className="price-dis">
-              <RupeeSymbol /> {price.Fee}
+              <RupeeSymbol /> {price.fee}
             </span>
           )}
         </div>

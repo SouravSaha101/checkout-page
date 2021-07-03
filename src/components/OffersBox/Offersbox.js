@@ -1,6 +1,8 @@
 import React from "react";
 import "./Offersbox.css";
 
+const feeAmount = 25;
+
 function Offersbox(props) {
   const style = {
     background: props.isFee ? "#f2faf9" : "#fff1ec",
@@ -13,6 +15,9 @@ function Offersbox(props) {
   const couponStyle = {
     padding: "10px 16px 12px 35px",
   };
+  const giftHandler = () => {
+    props.giftClick(props.fee.giftWrap ? 0 : feeAmount);
+  };
   return (
     <div>
       <div className="coupons-base-header"> {props.header}</div>
@@ -20,8 +25,12 @@ function Offersbox(props) {
         <h6>
           {props.message}
           {props.isGift && !props.isFee ? (
-            <button type="button" className="button arrow-float">
-              Apply
+            <button
+              type="button"
+              onClick={giftHandler}
+              className="button arrow-float"
+            >
+              {props.fee.giftWrap ? "Applied" : "Apply"}
             </button>
           ) : (
             <svg

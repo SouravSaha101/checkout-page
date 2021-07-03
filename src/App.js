@@ -141,8 +141,13 @@ function App() {
     });
     let fee = totalMRP < 5000 ? 99 : 0;
     let amount = totalMRP + price.giftWrap + fee;
-    setPrice({ ...price, amount, totalMRP, discount, itemCount, fee });
+    setPrice((p) => ({ ...p, amount, totalMRP, discount, itemCount, fee }));
   }, [cartItem]);
+
+  const giftHandler = (data) => {
+    let amount = price.amount - price.giftWrap + data;
+    setPrice((p) => ({ ...p, giftWrap: data, amount }));
+  };
 
   const changeAddressHandler = (det) => {
     setUserDetails({ ...det });
@@ -170,7 +175,7 @@ function App() {
             <Adbox text={textWhislist} />
           </div>
           <div className="col-lg-4">
-            <Sidebar price={price} />
+            <Sidebar price={price} giftFee={giftHandler} />
           </div>
         </div>
       </div>

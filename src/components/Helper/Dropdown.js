@@ -2,7 +2,6 @@ import React from "react";
 
 function Dropdown({ data, value, id, onChangeDropdown }) {
   const changeHandler = (e) => {
-    console.log("Hi", data);
     onChangeDropdown({ [id]: e.target.value });
   };
   return (
