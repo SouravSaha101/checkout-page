@@ -8,7 +8,13 @@ const quantityArray = Array.from({ length: 10 }, (_, i) => i + 1);
 
 function ItemCard({ data, onCartChange }) {
   const cartChangeHandler = (newData) => {
-    // onCartChange({ ...data, ...newData });
+    let key = Object.keys(newData)[1];
+    data.map((el) => {
+      if (el.id === newData.id) {
+        el[key] = newData[key];
+      }
+    });
+    onCartChange(data);
   };
   return (
     <>
@@ -25,7 +31,7 @@ function ItemCard({ data, onCartChange }) {
                   {el.brand}
                   <strong className="price-display">
                     <RupeeSymbol />
-                    <div className="price">{el.price}</div>
+                    <div className="price">{+el.qty * el.price}</div>
                   </strong>
                 </div>
                 <div>
@@ -33,7 +39,7 @@ function ItemCard({ data, onCartChange }) {
                   <div className="price-display">
                     <div className="strike">
                       <RupeeSymbol />
-                      {el.orgPrice}
+                      {+el.qty * el.orgPrice}
                     </div>
                     <div className="discount">{el.discount}% OFF</div>
                   </div>
@@ -46,6 +52,7 @@ function ItemCard({ data, onCartChange }) {
                     data={sizeArray}
                     value={el.size}
                     id={"size"}
+                    itemId={el.id}
                     onChangeDropdown={cartChangeHandler}
                   />
                 </div>
@@ -53,7 +60,8 @@ function ItemCard({ data, onCartChange }) {
                   Qty:{" "}
                   <Dropdown
                     data={quantityArray}
-                    value={el.qty}
+                    value={+el.qty}
+                    itemId={el.id}
                     id={"qty"}
                     onChangeDropdown={cartChangeHandler}
                   />

@@ -1,8 +1,8 @@
 import React from "react";
 
-function Dropdown({ data, value, id, onChangeDropdown }) {
+function Dropdown({ data, value, id, onChangeDropdown, itemId }) {
   const changeHandler = (e) => {
-    onChangeDropdown({ [id]: e.target.value });
+    onChangeDropdown({ id: itemId, [id]: +e.target.value });
   };
   return (
     <select value={value} onChange={changeHandler}>

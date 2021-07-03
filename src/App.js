@@ -58,7 +58,7 @@ const itemList = [
     discount: 30,
     deliveryDate: "9 Jul 2021",
     size: "L",
-    qty: 1,
+    qty: 2,
     orgPrice: 9000,
   },
 ];
@@ -136,10 +136,10 @@ function App() {
     let discount = 0;
     let itemCount = cartItem.length;
     cartItem.forEach((el) => {
-      totalMRP += el.price;
+      totalMRP += +el.qty * el.price;
       discount += el.orgPrice - el.price;
     });
-    let fee = totalMRP < 5000 ? 99 : 0;
+    let fee = totalMRP < 10000 ? 99 : 0;
     let amount = totalMRP + price.giftWrap + fee;
     setPrice((p) => ({ ...p, amount, totalMRP, discount, itemCount, fee }));
   }, [cartItem]);
@@ -153,7 +153,7 @@ function App() {
     setUserDetails({ ...det });
   };
   const cartChangeHadler = (data) => {
-    setCartItem([...cartItem, ...data]);
+    setCartItem([...data]);
   };
   return (
     <div className="">

@@ -26,7 +26,7 @@ function Pricing({ price }) {
           {!price.fee ? (
             <>
               <span className="price-dis cut-off">
-                <RupeeSymbol /> {price.fee}
+                <RupeeSymbol /> 99
               </span>
               FREE
             </>
